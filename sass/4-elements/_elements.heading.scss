@@ -1,0 +1,32 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: var(--spacing-medium-large);
+}
+
+h1 {
+  font-size: var(--text-font-size-super);
+}
+
+h2 {
+  font-size: var(--text-font-size-xlarge);
+}
+
+h3 {
+  font-size: var(--text-font-size-large);
+}
+
+h4 {
+  font-size: var(--text-font-size-medium);
+}
+
+h5 {
+  font-size: var(--text-font-size-small);
+}
+
+h6 {
+  font-size: var(--text-font-size-xsmall);
+}

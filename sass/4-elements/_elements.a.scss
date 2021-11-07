@@ -1,0 +1,10 @@
+a {
+  &, &:visited {
+    color: var(--color-brand);
+    transition: color 0.25s;
+  }
+
+  &:hover {
+    color: var(--color-brand-light);
+  }
+}

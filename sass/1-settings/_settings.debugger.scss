@@ -1,0 +1,29 @@
+// =============================================================================
+// debugger
+// =============================================================================
+
+// base line debugger
+$enable-debug-typography:           false !default;
+
+// whitespace debugger
+$enable-debug-whitespace:           false !default;
+
+@if $enable-debug-typography {
+  html {
+    background-color: #fff;
+    background-image: linier-gradient(transparent 50%, rgba(0, 0, 0, .1) 50%);
+  }
+}
+
+@if $enable-debug-whitespace {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  pre {
+    outline: 1px solid #f00;
+  }
+}
