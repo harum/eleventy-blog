@@ -35,7 +35,7 @@
           >
           <img
             src="/img/harum_profile_picture.jpg"
-            alt="Harum ProfilePicture"
+            alt="Harum Profile Picture"
             width="40" height="40"
           >
         </picture>
@@ -55,7 +55,11 @@
       {{ content | safe }}
     </main>
 
-    <footer></footer>
+    <footer class="u-mrgn-top--medium">
+      <section class="u-align-center" id="copyright">
+        <small>&copy; Copyright 2021, {{ metadata.author.name }}</small>
+      </section>
+    </footer>
 
     <!-- Current page: {{ page.url | url }} -->
   </body>
