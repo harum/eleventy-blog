@@ -8,9 +8,8 @@
     "build:eleventy": "eleventy",
     "watch:eleventy": "eleventy --watch",
     "serve": "eleventy --serve",
-    "start": "eleventy --serve",
     "debug": "DEBUG=* eleventy",
-    "start": "npm-run-all build:sass --parallel watch:*",
+    "start": "npm-run-all build:* serve --parallel watch:*",
     "watch": "npm-run-all watch:*",
     "build": "npm-run-all build:*"
   },

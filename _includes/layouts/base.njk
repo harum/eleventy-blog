@@ -3,11 +3,22 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title or metadata.title }}</title>
+    <meta name="theme-color" content="#c73f29">
+    <title>{{ title or metadata.title }} | Putu Harum Bawa</title>
     <meta name="description" content="{{ description or metadata.description }}">
     <link rel="stylesheet" href="{{ '/css/main.css' | url }}">
     <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
     <link rel="alternate" href="{{ metadata.jsonfeed.path | url }}" type="application/json" title="{{ metadata.title }}">
+
+    <meta property="og:title" content="{{ title or metadata.title }}">
+    <meta property="og:description" content="{{ description or metadata.description }}">
+    <meta property="og:image" content="/img/thumbnail.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:site_name" content="{{ metadata.title }}">
+    <meta name="twitter:image:alt" content="{{ title or metadata.title }}">
+
+    <link rel="shortcut icon" type="image/png" href="/img/harum_avatar.png"/>
   </head>
   <body>
     <header>
