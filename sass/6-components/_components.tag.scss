@@ -1,0 +1,26 @@
+/* Tags */
+.c-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-size: var(--text-font-size-xsmall);
+  padding: var(--spacing-xtiny) var(--spacing-small);
+  margin-left: var(--spacing-small);
+  margin-top: var(--spacing-small);
+  margin-bottom: var(--spacing-small);
+  color: var(--color-brand-dark);
+  border: 1px solid var(--color-brand-darker);
+  border-radius: var(--spacing-xsmall);
+  text-decoration: none;
+  line-height: var(--text-line-height);
+}
+
+.c-tag,
+.c-tag:visited {
+  color: var(--color-brand-darker);
+}
+.c-tag:hover,
+.c-tag:focus {
+  background-color: var(--color-brand-lightest);
+}

@@ -1,7 +1,34 @@
 .c-navigation {
   display: flex;
+  gap: var(--spacing-xsmall);
   justify-content: space-between;
   list-style: none;
-  padding-left: 0;
-  margin-bottom: var(--spacing-xlarge);
+  padding: 0;
+  margin: 0;
+}
+
+.c-navigation__item {
+  border-radius: var(--spacing-xsmall);
+  padding: var(--spacing-xtiny) var(--spacing-small);
+
+  a {
+    text-decoration: none;
+  }
+
+  &:hover {
+    background-color: var(--color-brand-lightest);
+  }
+
+  &--active {
+    background-color: var(--color-brand-darkest);
+
+    &:hover {
+      background-color: var(--color-brand-darker);
+    }
+
+    &,
+    a {
+      color: var(--color-white);
+    }
+  }
 }

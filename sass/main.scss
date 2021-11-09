@@ -18,10 +18,13 @@
 // 5-objects
 @import '5-objects/objects.container';
 @import '5-objects/objects.page';
+@import '5-objects/objects.content';
 
 // 6-components
+@import '6-components/components.header';
 @import '6-components/components.navigation';
 @import '6-components/components.avatar';
+@import '6-components/components.tag';
 @import '6-components/components.scroll-top-button';
 @import '6-components/components.vendor.prism';
 

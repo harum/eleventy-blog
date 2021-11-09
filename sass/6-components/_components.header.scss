@@ -1,0 +1,19 @@
+.c-header {
+  display: block;
+  margin-bottom: var(--spacing-large);
+}
+
+.c-header__image {
+}
+
+.c-header__nav {
+  margin-top: var(--spacing-medium);
+}
+
+@media (min-width: 28em) {
+  .c-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

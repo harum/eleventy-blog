@@ -1,6 +1,18 @@
 .c-avatar {
-  height: 125px;
-  margin-right: var(--spacing-small);
-  margin-bottom: var(--spacing-small);
-  border-radius: 50%;
+
+  &,
+  img {
+    display: block;
+    height: 125px;
+    width: 40px;
+    border-radius: 50%;
+  }
+}
+
+.c-avatar--small {
+  &,
+  img {
+    height: 40px;
+    width: 40px;
+  }
 }

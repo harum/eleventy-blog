@@ -18,18 +18,37 @@
     <meta property="og:site_name" content="{{ metadata.title }}">
     <meta name="twitter:image:alt" content="{{ title or metadata.title }}">
 
-    <link rel="shortcut icon" type="image/png" href="/img/harum_avatar.png"/>
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.png"/>
   </head>
-  <body>
-    <header>
-      <h1 class="home"><a href="{{ '/' | url }}">{{ metadata.title }}</a></h1>
-
+  <body class="o-container o-container--medium o-page u-pad-v--xlarge u-pad-h--xlarge">
+    <header class="c-header">
       {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
-      <ul class="nav">
-      {%- for entry in collections.all | eleventyNavigation %}
-        <li class="nav-item{% if entry.url == page.url %} nav-item-active{% endif %}"><a href="{{ entry.url | url }}">{{ entry.title }}</a></li>
-      {%- endfor %}
-      </ul>
+
+      <a
+        href="https://harumbawa.com"
+        class="c-header__image c-avatar c-avatar--small"
+      >
+        <picture>
+          <source
+            srcset="/img/harum_profile_picture.webp"
+            type="image/webp"
+          >
+          <img
+            src="/img/harum_profile_picture.jpg"
+            alt="Harum ProfilePicture"
+            width="40" height="40"
+          >
+        </picture>
+      </a>
+
+      <nav id="main-nav" role="navigation" class="c-header__nav">
+        <ul class="c-navigation">
+        {%- for entry in collections.all | eleventyNavigation %}
+          <li class="c-navigation__item{% if entry.url == page.url %}
+            c-navigation__item--active{% endif %}"><a href="{{ entry.url | url }}">{{ entry.title }}</a></li>
+        {%- endfor %}
+        </ul>
+      </nav>
     </header>
 
     <main{% if templateClass %} class="{{ templateClass }}"{% endif %}>
