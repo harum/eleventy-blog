@@ -8,10 +8,7 @@ layout: layouts/post.njk
 ---
 
 <section>
-<h2>
-  What is IIFE?
-  <a href="#what-is-iife" aria-hidden="true">#</a>
-</h2>
+<h2>What is IIFE?</h2>
 <p>
 IIFE is one of JavaScript programming language idiom. In my early time learning
 JavaScript, I also found people use self-executing anonymous function or 
@@ -22,10 +19,7 @@ IIFE (Immediately-Invoked Function Expressions) is the right terminology for it.
 </section>
 
 <section>
-<h2>
-  Why is IIFE?
-  <a href="#why-is-iife" aria-hidden="true">#</a>
-</h2>
+<h2>Why is IIFE?</h2>
 <p>
 IIFE produces a lexical scoping by using JavaScript's function scoping and it
 runs as soon as it is defined.
@@ -35,34 +29,33 @@ variable hoisting only happen inside the scope, it is not hoisted into global en
 </section>
 
 <section>
-<h2>
-  How to write IIFE?
-  <a href="#how-to-write-iife" aria-hidden="true">#</a>
-</h2>
+<h2>How to write IIFE?</h2>
 <p>
 There are several ways to write immediately invoked function expressions.
 </p>
 
-<pre>
-<code class="language-js">(function (){ /* code */ }()); // recommended by Crockford
+{% highlight "js" %}
+(function (){ /* code */ }()); // recommended by Crockford
 (function(){ /* code */ })(); // this also fine
 
 !function(){ /* code */ }();
 ~function(){ /* code */ }();
 -function(){ /* code */ }();
-+function(){ /* code */ }();</code>
-</pre>
++function(){ /* code */ }();
+{% endhighlight %}
 
 <br />
 <p>
 Maybe you will think why we need additional parens as wrapper. It should be as simple as declare a function and then add `()` to call that function. But it will not work. It will lead into syntax error because it is not a valid javascript code. Look at code below.
 </p>
 
-<pre><code class="language-js">function(){ /* code */ }()
+{% highlight "js" %}
+function(){ /* code */ }()
 // Uncaught SyntaxError: Unexpected token (
 
 function myNamedFunc(){ /* code */ }()
-// Uncaught SyntaxError: Invalid or unexpected token</code></pre>
+// Uncaught SyntaxError: Invalid or unexpected token
+{% endhighlight %}
 
 <br />
 <p>
@@ -79,7 +72,8 @@ create expressions. When using unary operator, your return value from your
 function will be changed. You can use unary operator if you are not concerning about return value of the function. Look at code below.
 </p>
 
-<pre><code class="language-js">// function return expected value
+{% highlight "js" %}
+// function return expected value
 (function (){ return 10 }()); // 10
 (function(){ return 10 })(); // 10
 
@@ -88,27 +82,25 @@ function will be changed. You can use unary operator if you are not concerning a
 ~function(){ return 10 }(); // -11
 -function(){ return 10 }(); // -10
 +function(){ return 'halo' }(); // NaN
-~function(){ return { name: 'haoo' } }(); // -1</code></pre>
-</section>
+~function(){ return { name: 'haoo' } }(); // -1
+{% endhighlight %}
 
 <section>
-<h2>
-  Use case
-  <a href="#use-case" aria-hidden="true">#</a>
-</h2>
-
+<h2>Use case</h2>
 <p>
 Prevent variable to pollute global environment, especially if you want your code
 run in the browser that is not supporting ES2015.
 </p>
 
-<pre><code class="language-js">(function (){
+{% highlight "js" %}
+(function (){
   var age = 25; // age only live inside this IIFE
 
   // other statements
 }());
 
-console.log(age); // Uncaught ReferenceError: age is not defined</code></pre>
+console.log(age); // Uncaught ReferenceError: age is not defined
+{% endhighlight %}
 
 <br />
 <p>
@@ -116,7 +108,8 @@ IIFE will help you to implement JavaScript Module pattern. Below is the example
 of singleton pattern.
 </p>
 
-<pre><code class="language-js">var counter = (function (){
+{% highlight "js" %}
+var counter = (function (){
   var count = 0;
 
   return {
@@ -132,14 +125,12 @@ of singleton pattern.
 counter.add()
 counter.add()
 counter.add()
-console.log(counter.get()) // 3</code></pre>
+console.log(counter.get()) // 3
+{% endhighlight %}
 </section>
 
 <section>
-<h2>
-  Further reading
-  <a href="#further-reading" aria-hidden="true">#</a>
-</h2>
+<h2>Further reading</h2>
 <p>
 If you interested in learning IIFE more deeper, you can read articles below. In
 Airbnb's article, you also will find why Crockford's way is more preferable.
