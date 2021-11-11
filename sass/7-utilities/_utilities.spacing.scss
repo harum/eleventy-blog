@@ -2,8 +2,12 @@
   margin-top: 0;
 }
 
+.u-mrgn-top--xsmall {
+  margin-top: var(--spacing-xsmall);
+}
+
 .u-mrgn-top--medium {
-  padding-top: var(--spacing-medium);
+  margin-top: var(--spacing-medium);
 }
 
 .u-mrgn-right--small {
