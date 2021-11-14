@@ -1,5 +1,3 @@
-<p>{{ postslist }}</p>
-
 {% for post in postslist | reverse %}
   {% if not post.data.draft %}
     <section>
