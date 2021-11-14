@@ -54,10 +54,31 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addCollection("tagList", function(collection) {
     let tagSet = new Set();
     collection.getAll().forEach(item => {
+
+      // Do not include tags of the draft post
+      if (item.data.draft) {
+        return;
+      }
+
       (item.data.tags || []).forEach(tag => tagSet.add(tag));
     });
 
     return filterTagList([...tagSet]);
+  });
+
+  // Customize post to only include published posts and hide draft posts
+  const now = new Date();
+  const publishedPosts = (post) => {
+    return post.date <= now && !post.data.draft;
+  };
+  eleventyConfig.addCollection("posts", (collection) => {
+    return collection
+      .getFilteredByGlob([
+        "./posts/*.njk",
+        "./posts/*.html",
+        "./posts/*.md",
+      ])
+      .filter(publishedPosts);
   });
 
   // Copy the `img` and `css` folders to the output

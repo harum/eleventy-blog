@@ -1,23 +1,27 @@
+<p>{{ postslist }}</p>
+
 {% for post in postslist | reverse %}
-  <section>
-    <article>
-      <header>
-        <div>
-          <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
-          {% for tag in post.data.tags | filterTagList %}
-            {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
-            <a href="{{ tagUrl | url }}" class="c-tag">{{ tag }}</a>
-          {% endfor %}
-        </div>
+  {% if not post.data.draft %}
+    <section>
+      <article>
+        <header>
+          <div>
+            <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+            {% for tag in post.data.tags | filterTagList %}
+              {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+              <a href="{{ tagUrl | url }}" class="c-tag">{{ tag }}</a>
+            {% endfor %}
+          </div>
 
-        <h2 class="u-mrgn-top--xsmall">
-          <a href="{{ post.url | url }}" class="postlist-link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
-        </h2>
-      </header>
+          <h2 class="u-mrgn-top--xsmall">
+            <a href="{{ post.url | url }}" class="postlist-link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
+          </h2>
+        </header>
 
-      <p>
-        {{ post.data.description }}
-      </p>
-    </article>
-  </section>
+        <p>
+          {{ post.data.description }}
+        </p>
+      </article>
+    </section>
+  {% endif %}
 {% endfor %}
