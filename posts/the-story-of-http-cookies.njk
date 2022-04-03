@@ -1,0 +1,130 @@
+---
+title: The Story of HTTP Cookies
+description: Which is a better way to save authentication and authorizatio token on client side. It is using cookies or localstorage?
+date: 2021-11-20
+tags:
+  - Browser Storage
+  - Security
+  - JavaScript
+layout: layouts/post.njk
+---
+
+<section>
+  <h2>How Does The HTTP Cookies Story Begin?</h2>
+  <p>
+    The story begin when you visit a website. The website want to show you an advertisement. But the website owner do not want to disturb you with frequent advertisement. So the website owner decided to only show you the advertiseemnt in 30 minutes after you click the advertisement.
+  </p>
+  <p>
+    Initially the website do not have any information wether you already click the advertisement or not. But once you click the advertisement, the web page will make request to the web server. The web server tagged that you already clicked the advertisement on that browser. The web server send you a cookies indicating that you already click the promo, and you will not be bothered by another one in 30 minutes.
+  </p>
+  <p>
+    The web server send you a cookie using <code>Set-Cookie</code> header as show below.
+  </p>
+  {% highlight "js" %}
+    Set-Cookie: promo_shown=1; Max-Age=1800
+  {% endhighlight %}
+  {% highlight "js" %}
+    Set-Cookie: promo_visited=1; Max-Age=0; Path=/; Expires=Wed, 08 Dec 2021 15:18:50 GMT
+  {% endhighlight %}
+  <p>
+    The <code>promo_shown</code> is the cookie name. The <code>Max-Age=1800</code> indicate that the cookie only available for 30 minutes (1800 seconds). Some browser do not support <code>Max-Age</code>, so there is other alternatives to specify <code>Expires</code> value.
+  </p>
+  <p>
+    When the browser receive the cookie header, then that piece of cookies will be stored inside the browser. Every next request that you make in that website will include the cookies value in the request header. The next request can be document request, stylesheet, JavaScript, or images that the website shown to you.
+  </p>
+
+  <p>
+    Here is example of request header that include your new cookies.
+  </p>
+  {% highlight "js" %}
+    Cookie: promo_visited=1
+  {% endhighlight %}
+
+  <p>
+    Usually there are more than one cookies that is stored on your browser. Those cookies then will be sent on every or suitable request according to the cookies rules.
+  </p>
+  <p>
+    The website owner now want to provide you option to choose theme on the website. The theme is stored in cookies.
+  </p>
+
+  {% highlight "js" %}
+    Set-Cookie: theme=dark; Max-Age=0; Path=/; Expires=Wed, 08 Dec 2022 15:18:50 GMT
+  {% endhighlight %}
+
+  <p>
+    Now, there will be two cookies on the request header whenever you make http request to that website.
+  </p>
+
+  {% highlight "js" %}
+    Cookie theme=dark; promo_visited=1
+  {% endhighlight %}
+</section>
+
+<section>
+  <h2>The Browser Client Want To Update Some Cookies</h2>
+  <p>
+    The website owner not only want to give you option to choose theme. But also want to support personalized font size that you can choose. They add functionality in the front end side so it can add cookies on the browser side.
+  </p>
+
+  {% highlight "js" %}
+    document.cookie = "font_size= 24; max-age=3600000";
+  {% endhighlight %}
+
+  <p>
+    Now, you will send 3 cookies when continue visiting the pages.
+  </p>
+
+  {% highlight "js" %}
+    Cookie theme=dark; font_size=24; promo_visited=1
+  {% endhighlight %}
+</section>
+
+<section>
+  <h2>Website Owner Want to Show Images From Social Media</h2>
+  <p>
+  </p>
+</section>
+
+<section>
+  <h2>What Will Happen to your sensitive Cookies Value</h2>
+  <p>
+  </p>
+</section>
+
+<section>
+  <h2>How You Prevent 3rd Party to access sensitive cookies</h2>
+  <p>
+  </p>
+</section>
+
+<section>
+  <h2>How to Store and Access Data in Cookies</h2>
+</section>
+
+<section>
+  <h2>Conclusion</h2>
+</section>
+
+<section>
+  <h2>Further Reading</h2>
+
+  <ul>
+    <li>
+      <a href="https://web.dev/samesite-cookies-explained/">SameSite cookies explained</a>
+    </li>
+    <li>
+      <a href="https://medium.com/@nitinpatel_20236/how-to-create-an-https-server-on-localhost-using-express-366435d61f28">setup https on express</a>
+    </li>
+    <li>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie">https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie</a>
+    </li>
+    <li>
+      <a
+        href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-rfc6265bis-03#section-4.1">RFC6265bis</a>
+    </li>
+    <li>
+      <a
+        href="https://cheatsheetseries.owasp.org/cheatsheets/HTML5_Security_Cheat_Sheet.html">HTML5 Security Cheat Sheet</a>
+    </li>
+  </ul>
+</section>
